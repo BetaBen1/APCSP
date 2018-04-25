@@ -1,0 +1,63 @@
+package com.ben.main;
+
+public class Main {
+
+	static int nCars = 1;
+	static int sCars = 2;
+	static int eCars = 1;
+	static int wCars = 1;
+	
+	static long nArrivalTime = 100;
+	static long sArrivalTime = 100;
+	static long eArrivalTime = 100;
+	static long wArrivalTime = 100;
+	
+	public static void main(String[] args) {
+		
+		run();
+		
+	}
+	
+	public static void run() {
+		
+		long startTime = System.currentTimeMillis();
+		nArrivalTime = startTime - System.currentTimeMillis();
+		System.out.println(nArrivalTime);
+		sArrivalTime = startTime - System.currentTimeMillis();
+		System.out.println(sArrivalTime);
+		eArrivalTime = startTime - System.currentTimeMillis();
+		System.out.println(eArrivalTime);
+		wArrivalTime = startTime - System.currentTimeMillis();
+		System.out.println(wArrivalTime);
+		
+		while(nCars != 0 && sCars != 0 && eCars != 0 && wCars != 0) {
+			if(nArrivalTime < sArrivalTime && nArrivalTime < eArrivalTime && nArrivalTime < sArrivalTime) {
+				System.out.println(nCars + " car(s) from the north go.");
+				nCars = 0;
+				nArrivalTime = 100;
+			}
+			else if(sArrivalTime < eArrivalTime && sArrivalTime < wArrivalTime) {
+				System.out.println(sCars + " car(s) from the south go.");
+				sCars = 0;
+				nArrivalTime = 100;
+			}
+			else if(eArrivalTime < wArrivalTime) {
+				System.out.println(eCars + " car(s) from the east go.");
+				eCars = 0;
+				eArrivalTime = 100;
+			}
+			else if(wArrivalTime != 100) {
+				System.out.println(wCars + " car(s) from the west go.");
+				wCars = 0;
+				wArrivalTime = 100;
+			}
+			else {
+				System.out.println("There are no more cars at the traffic light.");
+			}
+			
+			
+		}
+		
+	}
+	
+}
